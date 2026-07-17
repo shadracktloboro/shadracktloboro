@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beyond Pages — Shadrack Tloboro</title>
+<meta name="description" content="Books that turn insight into action, from author and speaker Shadrack Tloboro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0c0d10;
+    --navy:#12141c;
+    --navy-2:#191c28;
+    --teal:#2c5049;
+    --teal-light:#4d7d72;
+    --gold:#c9a227;
+    --gold-light:#e3c565;
+    --cream:#f5f1e8;
+    --cream-2:#ece5d3;
+    --muted:#8f8b7f;
+    --muted-dark:#5c594e;
+    --serif:'Cormorant Garamond',serif;
+    --sans:'Inter',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);
+    background:var(--cream);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 22px;}}
+
+  ::selection{background:var(--gold-light);color:var(--ink);}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:40;
+    background:rgba(12,13,16,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(201,162,39,0.18);
+  }
+  .nav-inner{
+    max-width:1120px;margin:0 auto;padding:16px 32px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .nav-brand{
+    display:flex;align-items:center;gap:10px;
+    font-family:var(--serif);font-weight:700;font-size:19px;
+    color:var(--cream);letter-spacing:0.5px;
+  }
+  .nav-mark{width:26px;height:26px;flex-shrink:0;}
+  .nav-links{display:flex;gap:30px;font-size:13px;letter-spacing:0.4px;color:var(--cream-2);}
+  .nav-links a{opacity:0.82;transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;color:var(--gold-light);}
+  .nav-cta{
+    font-size:12.5px;font-weight:600;letter-spacing:0.5px;
+    border:1px solid var(--gold);color:var(--gold-light);
+    padding:9px 18px;border-radius:2px;transition:background .2s,color .2s;
+  }
+  .nav-cta:hover{background:var(--gold);color:var(--ink);}
+  @media(max-width:760px){.nav-links{display:none;}}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(ellipse 900px 500px at 50% -12%, #22273a 0%, var(--navy) 55%, var(--ink) 100%);
+    color:var(--cream);
+    padding:96px 32px 90px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .ribbon{
+    position:absolute;top:0;left:50%;transform:translateX(-50%);
+    width:2px;height:64px;
+    background:linear-gradient(var(--gold), transparent);
+    opacity:0.7;
+  }
+  .hero-mark{
+    width:58px;height:58px;margin:0 auto 22px;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--gold);border-radius:50%;
+  }
+  .hero-mark svg{width:30px;height:30px;}
+  .eyebrow{
+    font-size:11.5px;letter-spacing:4px;text-transform:uppercase;
+    color:var(--gold-light);margin-bottom:20px;font-weight:600;
+  }
+  h1.brand{
+    font-family:var(--serif);font-weight:700;
+    font-size:clamp(40px,7vw,68px);
+    letter-spacing:1px;
+    color:var(--cream);
+    margin-bottom:22px;
+  }
+  h1.brand em{font-style:italic;color:var(--gold-light);}
+  .hero-pitch{
+    font-family:var(--serif);font-style:italic;font-weight:500;
+    font-size:clamp(19px,2.6vw,24px);
+    line-height:1.55;
+    max-width:560px;margin:0 auto 36px;
+    color:var(--cream-2);
+  }
+  .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--gold);color:var(--ink);
+    font-weight:700;font-size:13.5px;letter-spacing:0.6px;
+    padding:15px 30px;border-radius:2px;
+    transition:background .2s,transform .2s;
+    display:inline-block;
+  }
+  .btn-primary:hover{background:var(--gold-light);transform:translateY(-1px);}
+  .btn-ghost{
+    border:1px solid rgba(245,241,232,0.35);color:var(--cream);
+    font-weight:600;font-size:13.5px;letter-spacing:0.6px;
+    padding:15px 30px;border-radius:2px;
+    transition:border-color .2s,background .2s;
+    display:inline-block;
+  }
+  .btn-ghost:hover{border-color:var(--gold);background:rgba(201,162,39,0.08);}
+
+  /* SECTION LABELS */
+  .section-label{
+    font-size:11.5px;letter-spacing:3px;text-transform:uppercase;
+    color:var(--teal);font-weight:700;margin-bottom:10px;
+  }
+  .section-head{
+    text-align:center;max-width:600px;margin:0 auto 52px;
+  }
+  .section-head h2{
+    font-family:var(--serif);font-weight:700;font-size:clamp(28px,4vw,38px);
+    margin-bottom:14px;color:var(--ink);
+  }
+  .section-head p{color:var(--muted-dark);font-size:15.5px;line-height:1.6;}
+
+  /* BOOKS */
+  .books-section{padding:96px 32px 80px;}
+  .book-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:34px;
+    max-width:920px;margin:0 auto;
+  }
+  @media(max-width:760px){.book-grid{grid-template-columns:1fr;max-width:340px;gap:40px;}}
+  .book-card{display:flex;flex-direction:column;gap:16px;}
+  .book-cover{
+    aspect-ratio:2/3;border-radius:3px;position:relative;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    padding:26px;box-shadow:0 18px 40px -12px rgba(12,13,16,0.35);
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .book-cover:hover{transform:translateY(-6px);box-shadow:0 26px 50px -14px rgba(12,13,16,0.45);}
+  .book-cover::before{
+    content:'';position:absolute;inset:9px;border:1px solid rgba(201,162,39,0.32);pointer-events:none;
+  }
+  .book-cover::after{
+    content:'';position:absolute;top:0;right:0;width:0;height:0;
+    border-style:solid;border-width:0 26px 26px 0;
+    border-color:transparent rgba(245,241,232,0.14) transparent transparent;
+    transition:border-width .3s ease;
+  }
+  .book-cover:hover::after{border-width:0 34px 34px 0;}
+  .cover-1{background:linear-gradient(155deg,#1c2130 0%,#0c0d10 75%);}
+  .cover-2{background:linear-gradient(155deg,#22352f 0%,#0c0d10 78%);}
+  .cover-3{background:linear-gradient(155deg,#1e2028 0%,#0c0d10 72%);}
+  .book-title{
+    font-family:var(--serif);font-weight:700;font-size:16px;line-height:1.3;color:var(--gold-light);
+  }
+  .book-sub{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:8px;}
+  .book-meta{display:flex;align-items:center;justify-content:space-between;}
+  .book-price{font-family:var(--serif);font-weight:700;font-size:17px;color:var(--ink);}
+  .book-link{
+    font-size:11.5px;font-weight:600;letter-spacing:0.5px;color:var(--teal);
+    border-bottom:1px solid var(--teal-light);padding-bottom:1px;
+  }
+  .book-link:hover{color:var(--gold);border-color:var(--gold);}
+
+  .books-cta{text-align:center;margin-top:56px;}
+  .btn-dark{
+    display:inline-block;background:var(--ink);color:var(--gold-light);
+    font-weight:600;font-size:13.5px;letter-spacing:0.6px;
+    padding:15px 34px;border-radius:2px;border:1px solid var(--gold);
+    transition:background .2s;
+  }
+  .btn-dark:hover{background:var(--navy);}
+
+  /* STRIP */
+  .strip{
+    background:var(--teal);color:var(--cream);
+    padding:44px 32px;
+  }
+  .strip-inner{
+    max-width:920px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;
+  }
+  .strip-item{flex:1;min-width:140px;text-align:center;}
+  .strip-num{font-family:var(--serif);font-weight:700;font-size:30px;color:var(--gold-light);}
+  .strip-label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,241,232,0.78);margin-top:6px;}
+
+  /* MISSION */
+  .mission{padding:100px 32px;text-align:center;}
+  .mission-inner{max-width:640px;margin:0 auto;}
+  .mission-mark{width:1px;height:44px;background:var(--gold);margin:0 auto 30px;}
+  .mission h2{font-family:var(--serif);font-weight:700;font-size:clamp(26px,4vw,34px);margin-bottom:20px;}
+  .mission p{font-size:16px;line-height:1.75;color:var(--muted-dark);}
+  .mission p + p{margin-top:16px;}
+
+  /* PODCAST */
+  .podcast{background:var(--navy);color:var(--cream);padding:80px 32px;}
+  .podcast-inner{
+    max-width:920px;margin:0 auto;display:flex;align-items:center;gap:56px;flex-wrap:wrap;
+  }
+  .podcast-art{
+    width:180px;height:180px;flex-shrink:0;border-radius:4px;
+    background:radial-gradient(circle at 35% 30%, #2c5049 0%, #12141c 72%);
+    border:1px solid rgba(201,162,39,0.35);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .podcast-art svg{width:56px;height:56px;}
+  .podcast-text{flex:1;min-width:260px;}
+  .podcast-eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-light);margin-bottom:12px;font-weight:600;}
+  .podcast h3{font-family:var(--serif);font-weight:700;font-size:clamp(24px,3.4vw,30px);margin-bottom:14px;}
+  .podcast p{color:var(--cream-2);line-height:1.65;font-size:15px;margin-bottom:22px;max-width:480px;}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:var(--cream);padding:64px 32px 36px;}
+  .footer-inner{max-width:1120px;margin:0 auto;}
+  .footer-top{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:40px;
+    padding-bottom:44px;border-bottom:1px solid rgba(245,241,232,0.12);
+  }
+  .footer-brand{font-family:var(--serif);font-weight:700;font-size:22px;color:var(--gold-light);margin-bottom:10px;}
+  .footer-tag{font-size:13px;color:var(--muted);max-width:280px;line-height:1.6;}
+  .footer-col h4{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+  .footer-col a{display:block;font-size:13.5px;color:var(--cream-2);margin-bottom:10px;opacity:0.88;transition:opacity .2s;}
+  .footer-col a:hover{opacity:1;color:var(--gold-light);}
+  .footer-bottom{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    padding-top:26px;font-size:11.5px;color:var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <svg class="nav-mark" viewBox="0 0 24 24" fill="none" stroke="#e3c565" stroke-width="1.2">
+        <path d="M4 18c4-2 8-2 8-2s4 0 8 2M4 18V8c4-2 8-2 8-2s4 0 8 2v10" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Beyond Pages
+    </div>
+    <div class="nav-links">
+      <a href="#books">Books</a>
+      <a href="#mission">Mission</a>
+      <a href="#podcast">Podcast</a>
+      <a href="https://linktr.ee/shadracktloboro">Connect</a>
+    </div>
+    <a class="nav-cta" href="https://payhip.com/shadracktloboro">Shop the Store</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="ribbon"></div>
+  <div class="hero-mark">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#e3c565" stroke-width="1.2">
+      <path d="M4 18c4-2 8-2 8-2s4 0 8 2M4 18V8c4-2 8-2 8-2s4 0 8 2v10" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="eyebrow">Inspire · Empower · Transform</div>
+  <h1 class="brand">Beyond <em>Pages</em></h1>
+  <p class="hero-pitch">Books that turn insight into action — for readers building a life on purpose, one deliberate page at a time.</p>
+  <div class="hero-ctas">
+    <a class="btn-primary" href="https://payhip.com/shadracktloboro">Shop All Books</a>
+    <a class="btn-ghost" href="#mission">Our Mission</a>
+  </div>
+</header>
+
+<section class="books-section" id="books">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-label">Featured Titles</div>
+      <h2>From Insight to Impact</h2>
+      <p>Every title is written to be lived, not just read — practical guidance for growth, purpose, and rising above modern struggle.</p>
+    </div>
+
+    <div class="book-grid">
+      <div class="book-card">
+        <div class="book-cover cover-1">
+          <div>
+            <div class="book-title">Pressure Creates Diamonds</div>
+            <div class="book-sub">Growth &amp; Self-Discovery</div>
+          </div>
+        </div>
+        <div class="book-meta">
+          <span class="book-price">$14.99</span>
+          <a class="book-link" href="https://payhip.com/shadracktloboro">View →</a>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <div class="book-cover cover-2">
+          <div>
+            <div class="book-title">Elevate Your Life</div>
+            <div class="book-sub">The Power of Positive Action</div>
+          </div>
+        </div>
+        <div class="book-meta">
+          <span class="book-price">$12.99</span>
+          <a class="book-link" href="https://payhip.com/shadracktloboro">View →</a>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <div class="book-cover cover-3">
+          <div>
+            <div class="book-title">Breakthrough Society</div>
+            <div class="book-sub">Rising Above Modern Struggles</div>
+          </div>
+        </div>
+        <div class="book-meta">
+          <span class="book-price">$14.99</span>
+          <a class="book-link" href="https://payhip.com/shadracktloboro">View →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="books-cta">
+      <a class="btn-dark" href="https://payhip.com/shadracktloboro">Browse the Full Catalog</a>
+    </div>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="strip-inner">
+    <div class="strip-item">
+      <div class="strip-num">5</div>
+      <div class="strip-label">Titles</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-num">100%</div>
+      <div class="strip-label">Digital &amp; Instant</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-num">24/7</div>
+      <div class="strip-label">Access</div>
+    </div>
+  </div>
+</section>
+
+<section class="mission" id="mission">
+  <div class="mission-inner">
+    <div class="mission-mark"></div>
+    <h2>Written to Be Lived</h2>
+    <p>Beyond Pages exists for readers who are done consuming advice and ready to act on it. Every book, talk, and episode is built around one idea: real transformation happens in the space between what you read and what you do next.</p>
+    <p>This is a hub for practical growth — grounded, honest, and built for people rising above whatever stands in front of them.</p>
+  </div>
+</section>
+
+<section class="podcast" id="podcast">
+  <div class="podcast-inner">
+    <div class="podcast-art">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#e3c565" stroke-width="1.2">
+        <path d="M12 3a4 4 0 0 0-4 4v5a4 4 0 0 0 8 0V7a4 4 0 0 0-4-4Z" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="podcast-text">
+      <div class="podcast-eyebrow">The Podcast</div>
+      <h3>State of Mind with Shadrack Tloboro</h3>
+      <p>Conversations on growth, discipline, and rising above modern struggle — the ideas behind the books, unpacked out loud.</p>
+      <a class="btn-ghost" href="https://linktr.ee/shadracktloboro">Listen Now</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Beyond Pages</div>
+        <p class="footer-tag">Books that turn insight into action, from author and speaker Shadrack Tloboro.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#books">Books</a>
+        <a href="#mission">Mission</a>
+        <a href="#podcast">Podcast</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="https://payhip.com/shadracktloboro">Payhip Store</a>
+        <a href="https://linktr.ee/shadracktloboro">All Links</a>
+        <a href="mailto:shadracktloboro@proton.me">Email</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© Beyond Pages · Shadrack Tloboro</span>
+      <span>Built for readers ready to act.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
